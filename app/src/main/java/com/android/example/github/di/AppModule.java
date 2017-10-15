@@ -8,11 +8,16 @@ import com.android.example.github.db.GithubDb;
 import com.android.example.github.db.RepoDao;
 import com.android.example.github.db.UserDao;
 import com.android.example.github.util.LiveDataCallAdapterFactory;
+import com.google.gson.GsonBuilder;
+
+import java.util.logging.Level;
 
 import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -24,13 +29,25 @@ import retrofit2.converter.gson.GsonConverterFactory;
 class AppModule {
     @Singleton
     @Provides
-    GithubService provideGithubService() {
+    GithubService provideGithubService(OkHttpClient okHttpClient) {
         return new Retrofit.Builder()
                 .baseUrl("https://api.github.com/")
-                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create(
+                        new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").create()))
                 .addCallAdapterFactory(new LiveDataCallAdapterFactory())
+                .client(okHttpClient)
                 .build()
                 .create(GithubService.class);
+    }
+
+    @Singleton @Provides
+    OkHttpClient provideClient(){
+        HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
+        logging.setLevel(HttpLoggingInterceptor.Level.BODY);
+
+        OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
+        httpClient.addInterceptor(logging);  // <-- this is the important line!
+        return httpClient.build();
     }
 
     @Singleton @Provides

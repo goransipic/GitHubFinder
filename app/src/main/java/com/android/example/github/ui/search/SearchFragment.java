@@ -13,6 +13,7 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.KeyEvent;
@@ -36,6 +37,8 @@ import com.android.example.github.vo.Resource;
 import java.util.List;
 
 import javax.inject.Inject;
+
+import static android.support.v7.widget.DividerItemDecoration.VERTICAL;
 
 /**
  * Created by gsipic on 14.10.17..
@@ -74,47 +77,31 @@ public class SearchFragment extends LifecycleFragment implements Injectable {
         super.onActivityCreated(savedInstanceState);
         searchViewModel = ViewModelProviders.of(this, viewModelFactory).get(SearchViewModel.class);
         initRecyclerView();
-        RepoListAdapter rvAdapter = new RepoListAdapter(dataBindingComponent, true,
-                new RepoListAdapter.RepoClickCallback() {
-                    @Override
-                    public void onClick(Repo repo) {
-                        navigationController.navigateToRepo(repo.owner.login, repo.name);
-                    }
-                });
+        RepoListAdapter rvAdapter = new RepoListAdapter(dataBindingComponent,
+                repo -> navigationController.navigateToRepo(repo.owner.login, repo.name));
         binding.repoList.setAdapter(rvAdapter);
         adapter = rvAdapter;
 
         initSearchInputListener();
 
-        binding.setCallback(new RetryCallback() {
-            @Override
-            public void retry() {
-                searchViewModel.refresh();
-            }
-        });
+        binding.setCallback(() -> searchViewModel.refresh());
     }
 
     private void initSearchInputListener() {
-        binding.input.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-                    doSearch(v);
-                    return true;
-                }
-                return false;
+        binding.input.setOnEditorActionListener((v, actionId, event) -> {
+            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                doSearch(v);
+                return true;
             }
+            return false;
         });
-        binding.input.setOnKeyListener(new View.OnKeyListener() {
-            @Override
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                if ((event.getAction() == KeyEvent.ACTION_DOWN)
-                        && (keyCode == KeyEvent.KEYCODE_ENTER)) {
-                    doSearch(v);
-                    return true;
-                }
-                return false;
+        binding.input.setOnKeyListener((v, keyCode, event) -> {
+            if ((event.getAction() == KeyEvent.ACTION_DOWN)
+                    && (keyCode == KeyEvent.KEYCODE_ENTER)) {
+                doSearch(v);
+                return true;
             }
+            return false;
         });
     }
 
@@ -140,31 +127,27 @@ public class SearchFragment extends LifecycleFragment implements Injectable {
                 }
             }
         });
-        searchViewModel.getResults().observe(this, new Observer<Resource<List<Repo>>>() {
-            @Override
-            public void onChanged(@Nullable Resource<List<Repo>> result) {
-                binding.setSearchResource(result);
-                binding.setResultCount((result == null || result.data == null)
-                        ? 0 : result.data.size());
-                adapter.replace(result == null ? null : result.data);
-                binding.executePendingBindings();
-            }
+        binding.repoList.addItemDecoration( new DividerItemDecoration(
+                this.getContext(), VERTICAL));
+        searchViewModel.getResults().observe(this, result -> {
+            binding.setSearchResource(result);
+            binding.setResultCount((result == null || result.data == null)
+                    ? 0 : result.data.size());
+            adapter.replace(result == null ? null : result.data);
+            binding.executePendingBindings();
         });
 
-        searchViewModel.getLoadMoreStatus().observe(this, new Observer<SearchViewModel.LoadMoreState>() {
-            @Override
-            public void onChanged(@Nullable SearchViewModel.LoadMoreState loadingMore) {
-                if (loadingMore == null) {
-                    binding.setLoadingMore(false);
-                } else {
-                    binding.setLoadingMore(loadingMore.isRunning());
-                    String error = loadingMore.getErrorMessageIfNotHandled();
-                    if (error != null) {
-                        Snackbar.make(binding.loadMoreBar, error, Snackbar.LENGTH_LONG).show();
-                    }
+        searchViewModel.getLoadMoreStatus().observe(this, loadingMore -> {
+            if (loadingMore == null) {
+                binding.setLoadingMore(false);
+            } else {
+                binding.setLoadingMore(loadingMore.isRunning());
+                String error = loadingMore.getErrorMessageIfNotHandled();
+                if (error != null) {
+                    Snackbar.make(binding.loadMoreBar, error, Snackbar.LENGTH_LONG).show();
                 }
-                binding.executePendingBindings();
             }
+            binding.executePendingBindings();
         });
     }
 

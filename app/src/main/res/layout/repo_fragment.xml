@@ -21,7 +21,7 @@
             android:orientation="vertical" android:layout_width="match_parent"
             android:layout_height="match_parent">
         <TextView
-            android:id="@+id/name"
+            android:id="@+id/repo_name"
             style="@style/TextAppearance.AppCompat.Headline"
 
             android:layout_width="wrap_content"
@@ -30,7 +30,6 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             app:visibleGone="@{repo != null}"
-            android:text="@{@string/repo_full_name(repo.owner.login, repo.name)}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" tools:text="name of the user"/>
         <TextView
@@ -42,8 +41,8 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             app:visibleGone="@{repo != null}"
-            android:text="@{repo.description}" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/name" tools:text="description of the user"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/repo_name" tools:text="description of the user"/>
         <android.support.v7.widget.RecyclerView
             android:id="@+id/contributor_list"
             app:layoutManager="LinearLayoutManager"

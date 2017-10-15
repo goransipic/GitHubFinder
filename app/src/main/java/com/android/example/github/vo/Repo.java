@@ -1,38 +1,47 @@
 package com.android.example.github.vo;
 
+import com.android.example.github.db.GithubTypeConverters;
 import com.google.gson.annotations.SerializedName;
 
 import android.arch.persistence.room.Embedded;
 import android.arch.persistence.room.Entity;
-import android.arch.persistence.room.Index;
+import android.arch.persistence.room.TypeConverters;
+
+import java.util.Date;
 
 /**
  * Created by gsipic on 14.10.17..
  */
-@Entity(indices = {@Index("id"), @Index("owner_login")},
-        primaryKeys = {"name", "owner_login"})
+@Entity(primaryKeys = {"name", "owner_login"})
+@TypeConverters(GithubTypeConverters.class)
 public class Repo {
     public static final int UNKNOWN_ID = -1;
     public final int id;
     @SerializedName("name")
     public final String name;
-    @SerializedName("full_name")
-    public final String fullName;
-    @SerializedName("description")
-    public final String description;
+    @SerializedName("watchers_count")
+    public final int watchers;
+    @SerializedName("forks_count")
+    public final int forks;
+    @SerializedName("open_issues_count")
+    public final int issues;
     @SerializedName("stargazers_count")
     public final int stars;
+    @SerializedName("updated_at")
+    public final Date date;
     @SerializedName("owner")
     @Embedded(prefix = "owner_")
     public final Owner owner;
 
-    public Repo(int id, String name, String fullName, String description, Owner owner, int stars) {
+    public Repo(int id, String name, Owner owner, int watchers, int forks ,int issues, int stars, Date date) {
         this.id = id;
         this.name = name;
-        this.fullName = fullName;
-        this.description = description;
         this.owner = owner;
+        this.watchers = watchers;
+        this.forks = forks;
+        this.issues = issues;
         this.stars = stars;
+        this.date = date;
     }
 
     public static class Owner {
@@ -40,10 +49,13 @@ public class Repo {
         public final String login;
         @SerializedName("url")
         public final String url;
+        @SerializedName("avatar_url")
+        public final String avatarUrl;
 
-        public Owner(String login, String url) {
+        public Owner(String login, String url, String avatarUrl) {
             this.login = login;
             this.url = url;
+            this.avatarUrl = avatarUrl;
         }
 
         @Override

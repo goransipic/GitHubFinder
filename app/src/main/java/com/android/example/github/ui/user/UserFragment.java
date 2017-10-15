@@ -66,7 +66,7 @@ public class UserFragment extends LifecycleFragment implements Injectable {
             binding.setUserResource(userResource);
             binding.executePendingBindings();
         });
-        RepoListAdapter rvAdapter = new RepoListAdapter(dataBindingComponent, false,
+        RepoListAdapter rvAdapter = new RepoListAdapter(dataBindingComponent,
                 repo -> navigationController.navigateToRepo(repo.owner.login, repo.name));
         binding.repoList.setAdapter(rvAdapter);
         this.adapter = rvAdapter;
