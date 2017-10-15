@@ -189,11 +189,11 @@ public class RepoRepository {
                     } else {
                         switch (filterBy) {
                             case STARS:
-                                return repoDao.loadByForks();
+                                return repoDao.loadByStars();
                             case FORKS:
                                 return repoDao.loadByForks();
                             case UPDATED:
-                                return repoDao.loadByForks();
+                                return repoDao.loadByDate();
                             default:
                                return repoDao.loadOrdered(searchData.repoIds);
                         }

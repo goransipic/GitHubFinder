@@ -9,6 +9,7 @@ import android.arch.lifecycle.ViewModel;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.VisibleForTesting;
+import android.support.v4.util.Pair;
 
 import com.android.example.github.repository.RepoRepository;
 import com.android.example.github.util.AbsentLiveData;
@@ -27,20 +28,23 @@ import javax.inject.Inject;
  */
 
 public class SearchViewModel extends ViewModel {
-    private final MutableLiveData<String> query = new MutableLiveData<>();
+    public final MutableLiveData<Pair<String,FilterBy>> query = new MutableLiveData<>();
 
     private final LiveData<Resource<List<Repo>>> results;
 
     private final NextPageHandler nextPageHandler;
 
+    private RepoRepository repoRepository;
+
     @Inject
     SearchViewModel(final RepoRepository repoRepository) {
+        this.repoRepository = repoRepository;
         nextPageHandler = new NextPageHandler(repoRepository);
         results = Transformations.switchMap(query, search -> {
-            if (search == null || search.trim().length() == 0) {
+            if (search == null || search.first.trim().length() == 0) {
                 return AbsentLiveData.create();
             } else {
-                return repoRepository.search(search, FilterBy.FORKS);
+                return repoRepository.search(search.first, search.second);
             }
         });
     }
@@ -49,13 +53,13 @@ public class SearchViewModel extends ViewModel {
         return results;
     }
 
-    public void setQuery(@NonNull String originalInput) {
-        String input = originalInput.toLowerCase(Locale.getDefault()).trim();
+    public void setQuery(@NonNull Pair<String,FilterBy> sortByPair) {
+        String input = sortByPair.first.toLowerCase(Locale.getDefault()).trim();
         if (Objects.equals(input, query.getValue())) {
             return;
         }
         nextPageHandler.reset();
-        query.setValue(input);
+        query.setValue(sortByPair);
     }
 
     LiveData<LoadMoreState> getLoadMoreStatus() {
@@ -63,7 +67,7 @@ public class SearchViewModel extends ViewModel {
     }
 
     void loadNextPage() {
-        String value = query.getValue();
+        String value = query.getValue().first;
         if (value == null || value.trim().length() == 0) {
             return;
         }

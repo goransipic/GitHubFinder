@@ -89,6 +89,12 @@ public abstract class RepoDao {
     @Query("SELECT * FROM Repo ORDER BY forks DESC")
     public abstract LiveData<List<Repo>> loadByForks();
 
+    @Query("SELECT * FROM Repo ORDER BY stars DESC")
+    public abstract LiveData<List<Repo>> loadByStars();
+
+    @Query("SELECT * FROM Repo ORDER BY date DESC")
+    public abstract LiveData<List<Repo>> loadByDate();
+
     @Query("SELECT * FROM RepoSearchResult WHERE query = :query")
     public abstract RepoSearchResult findSearchResult(String query);
 }

@@ -13,6 +13,7 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.util.Pair;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -20,6 +21,7 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
@@ -33,6 +35,7 @@ import com.android.example.github.di.Injectable;
 import com.android.example.github.ui.common.NavigationController;
 import com.android.example.github.ui.common.RepoListAdapter;
 import com.android.example.github.ui.common.RetryCallback;
+import com.android.example.github.vo.FilterBy;
 import com.android.example.github.vo.Repo;
 import com.android.example.github.vo.Resource;
 
@@ -94,13 +97,31 @@ public class SearchFragment extends LifecycleFragment implements Injectable {
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.menu_search,menu);
+        inflater.inflate(R.menu.menu_search, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.filter_by_forks:
+                doSearch(binding.input,FilterBy.FORKS);
+                return true;
+            case R.id.filter_by_stars:
+                doSearch(binding.input,FilterBy.STARS);
+                return true;
+            case R.id.filter_by_date:
+                doSearch(binding.input,FilterBy.UPDATED);
+                return true;
+            default:
+                return false;
+        }
     }
 
     private void initSearchInputListener() {
         binding.input.setOnEditorActionListener((v, actionId, event) -> {
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-                doSearch(v);
+                doSearch(v,searchViewModel.query.getValue() != null
+                        ? searchViewModel.query.getValue().second: FilterBy.FORKS);
                 return true;
             }
             return false;
@@ -108,19 +129,20 @@ public class SearchFragment extends LifecycleFragment implements Injectable {
         binding.input.setOnKeyListener((v, keyCode, event) -> {
             if ((event.getAction() == KeyEvent.ACTION_DOWN)
                     && (keyCode == KeyEvent.KEYCODE_ENTER)) {
-                doSearch(v);
+                doSearch(v,searchViewModel.query.getValue() != null
+                        ? searchViewModel.query.getValue().second: FilterBy.FORKS);
                 return true;
             }
             return false;
         });
     }
 
-    private void doSearch(View v) {
+    private void doSearch(View v, FilterBy filterBy) {
         String query = binding.input.getText().toString();
         // Dismiss keyboard
         dismissKeyboard(v.getWindowToken());
         binding.setQuery(query);
-        searchViewModel.setQuery(query);
+        searchViewModel.setQuery(new Pair<>(query,filterBy));
     }
 
     private void initRecyclerView() {
@@ -137,7 +159,7 @@ public class SearchFragment extends LifecycleFragment implements Injectable {
                 }
             }
         });
-        binding.repoList.addItemDecoration( new DividerItemDecoration(
+        binding.repoList.addItemDecoration(new DividerItemDecoration(
                 this.getContext(), VERTICAL));
         searchViewModel.getResults().observe(this, result -> {
             binding.setSearchResource(result);
