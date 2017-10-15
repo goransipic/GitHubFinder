@@ -187,17 +187,7 @@ public class RepoRepository {
                     if (searchData == null) {
                         return AbsentLiveData.create();
                     } else {
-                        switch (filterBy) {
-                            case STARS:
-                                return repoDao.loadByStars();
-                            case FORKS:
-                                return repoDao.loadByForks();
-                            case UPDATED:
-                                return repoDao.loadByDate();
-                            default:
-                               return repoDao.loadOrdered(searchData.repoIds);
-                        }
-
+                        return repoDao.loadOrdered(searchData.repoIds,filterBy);
                     }
                 });
             }

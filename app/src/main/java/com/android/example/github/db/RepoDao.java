@@ -17,6 +17,7 @@
 package com.android.example.github.db;
 
 import com.android.example.github.vo.Contributor;
+import com.android.example.github.vo.FilterBy;
 import com.android.example.github.vo.Repo;
 import com.android.example.github.vo.RepoSearchResult;
 
@@ -30,6 +31,7 @@ import android.arch.persistence.room.RoomWarnings;
 import android.util.SparseIntArray;
 
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 @Dao
@@ -67,18 +69,21 @@ public abstract class RepoDao {
     @Query("SELECT * FROM RepoSearchResult WHERE query = :query")
     public abstract LiveData<RepoSearchResult> search(String query);
 
-    public LiveData<List<Repo>> loadOrdered(List<Integer> repoIds) {
-        SparseIntArray order = new SparseIntArray();
-        int index = 0;
-        for (Integer repoId : repoIds) {
-            order.put(repoId, index++);
-        }
+    public LiveData<List<Repo>> loadOrdered(List<Integer> repoIds, FilterBy filterBy) {
         return Transformations.map(loadById(repoIds), repositories -> {
-            Collections.sort(repositories, (r1, r2) -> {
-                int pos1 = order.get(r1.id);
-                int pos2 = order.get(r2.id);
-                return pos1 - pos2;
-            });
+            switch (filterBy) {
+                case FORKS:
+                    Collections.sort(repositories, (o1, o2) -> (o2.forks < o1.forks) ? -1 : ((o2.forks == o1.forks) ? 0 : 1));
+                    break;
+                case STARS:
+                    Collections.sort(repositories, (o1, o2) -> (o2.stars < o1.stars) ? -1 : ((o2.stars == o1.stars) ? 0 : 1));
+                    break;
+                case UPDATED:
+                    Collections.sort(repositories, (o1, o2) -> (o2.date.getTime() < o1.date.getTime()) ? -1 : ((o2.date.getTime() == o1.date.getTime()) ? 0 : 1));
+                    break;
+                default:
+            }
+
             return repositories;
         });
     }
