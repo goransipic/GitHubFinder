@@ -1,11 +1,19 @@
 package com.android.example.github.vo;
 
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.ForeignKey;
+
 import com.google.gson.annotations.SerializedName;
 
 /**
  * Created by gsipic on 14.10.17..
  */
-
+@Entity(primaryKeys = {"repoName", "repoOwner", "login"},
+        foreignKeys = @ForeignKey(entity = Repo.class,
+                parentColumns = {"name", "owner_login"},
+                childColumns = {"repoName", "repoOwner"},
+                onUpdate = ForeignKey.CASCADE,
+                deferred = true))
 public class Contributor {
     @SerializedName("login")
     private final String login;

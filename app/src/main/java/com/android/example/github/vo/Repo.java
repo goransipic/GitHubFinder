@@ -2,10 +2,15 @@ package com.android.example.github.vo;
 
 import com.google.gson.annotations.SerializedName;
 
+import android.arch.persistence.room.Embedded;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Index;
+
 /**
  * Created by gsipic on 14.10.17..
  */
-
+@Entity(indices = {@Index("id"), @Index("owner_login")},
+        primaryKeys = {"name", "owner_login"})
 public class Repo {
     public static final int UNKNOWN_ID = -1;
     public final int id;
@@ -18,6 +23,7 @@ public class Repo {
     @SerializedName("stargazers_count")
     public final int stars;
     @SerializedName("owner")
+    @Embedded(prefix = "owner_")
     public final Owner owner;
 
     public Repo(int id, String name, String fullName, String description, Owner owner, int stars) {

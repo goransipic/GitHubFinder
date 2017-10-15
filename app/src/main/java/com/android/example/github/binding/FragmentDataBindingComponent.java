@@ -1,6 +1,5 @@
 package com.android.example.github.binding;
 
-import android.databinding.DataBindingComponent;
 import android.support.v4.app.Fragment;
 
 /**

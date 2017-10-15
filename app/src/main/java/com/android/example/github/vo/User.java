@@ -1,11 +1,13 @@
 package com.android.example.github.vo;
 
+import android.arch.persistence.room.Entity;
+
 import com.google.gson.annotations.SerializedName;
 
 /**
  * Created by gsipic on 14.10.17..
  */
-
+@Entity(primaryKeys = "login")
 public class User {
     @SerializedName("login")
     public final String login;

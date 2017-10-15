@@ -1,13 +1,18 @@
 package com.android.example.github.vo;
 
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.TypeConverters;
 import android.support.annotation.Nullable;
+
+import com.android.example.github.db.GithubTypeConverters;
 
 import java.util.List;
 
 /**
  * Created by gsipic on 14.10.17..
  */
-
+@Entity(primaryKeys = {"query"})
+@TypeConverters(GithubTypeConverters.class)
 public class RepoSearchResult {
     public final String query;
     public final List<Integer> repoIds;
