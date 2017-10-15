@@ -36,12 +36,14 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="0dp"
             android:text="@{repo.name}"
+            android:textAppearance="?textAppearanceListItem"
             app:layout_constraintLeft_toRightOf="@+id/avatar_image"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="test" />
+            app:layout_constraintTop_toTopOf="@+id/avatar_image"
+            tools:text="test"
+            app:layout_constraintHorizontal_bias="0.0" />
 
         <TextView
             android:id="@+id/user_name"
@@ -49,7 +51,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="0dp"
             android:text="@{repo.owner.login}"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toRightOf="@+id/avatar_image"
@@ -62,11 +64,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="0dp"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="0dp"
             android:text='@{"w: "+repo.watchers}'
             app:layout_constraintLeft_toLeftOf="@+id/user_name"
             app:layout_constraintTop_toBottomOf="@+id/user_name"
-            tools:text="watchers" />
+            tools:text="watchers"
+            app:layout_constraintBottom_toBottomOf="@+id/avatar_image"
+            android:layout_marginBottom="8dp" />
 
         <TextView
             android:id="@+id/forks"
