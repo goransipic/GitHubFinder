@@ -13,6 +13,7 @@ import android.support.annotation.VisibleForTesting;
 import com.android.example.github.repository.RepoRepository;
 import com.android.example.github.util.AbsentLiveData;
 import com.android.example.github.util.Objects;
+import com.android.example.github.vo.FilterBy;
 import com.android.example.github.vo.Repo;
 import com.android.example.github.vo.Resource;
 
@@ -35,14 +36,11 @@ public class SearchViewModel extends ViewModel {
     @Inject
     SearchViewModel(final RepoRepository repoRepository) {
         nextPageHandler = new NextPageHandler(repoRepository);
-        results = Transformations.switchMap(query, new Function<String, LiveData<Resource<List<Repo>>>>() {
-            @Override
-            public LiveData<Resource<List<Repo>>> apply(String search) {
-                if (search == null || search.trim().length() == 0) {
-                    return AbsentLiveData.create();
-                } else {
-                    return repoRepository.search(search);
-                }
+        results = Transformations.switchMap(query, search -> {
+            if (search == null || search.trim().length() == 0) {
+                return AbsentLiveData.create();
+            } else {
+                return repoRepository.search(search, FilterBy.FORKS);
             }
         });
     }

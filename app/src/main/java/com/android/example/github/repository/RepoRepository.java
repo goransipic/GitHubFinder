@@ -14,6 +14,7 @@ import com.android.example.github.db.RepoDao;
 import com.android.example.github.util.AbsentLiveData;
 import com.android.example.github.util.RateLimiter;
 import com.android.example.github.vo.Contributor;
+import com.android.example.github.vo.FilterBy;
 import com.android.example.github.vo.Repo;
 import com.android.example.github.vo.RepoSearchResult;
 import com.android.example.github.vo.Resource;
@@ -156,7 +157,7 @@ public class RepoRepository {
         return fetchNextSearchPageTask.getLiveData();
     }
 
-    public LiveData<Resource<List<Repo>>> search(String query) {
+    public LiveData<Resource<List<Repo>>> search(String query, FilterBy filterBy) {
         return new NetworkBoundResource<List<Repo>, RepoSearchResponse>(appExecutors) {
 
             @Override
@@ -186,7 +187,17 @@ public class RepoRepository {
                     if (searchData == null) {
                         return AbsentLiveData.create();
                     } else {
-                        return repoDao.loadOrdered(searchData.repoIds);
+                        switch (filterBy) {
+                            case STARS:
+                                return repoDao.loadByForks();
+                            case FORKS:
+                                return repoDao.loadByForks();
+                            case UPDATED:
+                                return repoDao.loadByForks();
+                            default:
+                               return repoDao.loadOrdered(searchData.repoIds);
+                        }
+
                     }
                 });
             }

@@ -18,6 +18,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
@@ -65,6 +67,9 @@ public class SearchFragment extends LifecycleFragment implements Injectable {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
+
+        setHasOptionsMenu(true);
+
         SearchFragmentBinding dataBinding = DataBindingUtil
                 .inflate(inflater, R.layout.search_fragment, container, false,
                         dataBindingComponent);
@@ -85,6 +90,11 @@ public class SearchFragment extends LifecycleFragment implements Injectable {
         initSearchInputListener();
 
         binding.setCallback(() -> searchViewModel.refresh());
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_search,menu);
     }
 
     private void initSearchInputListener() {

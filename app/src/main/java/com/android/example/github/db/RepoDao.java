@@ -32,9 +32,6 @@ import android.util.SparseIntArray;
 import java.util.Collections;
 import java.util.List;
 
-/**
- * Interface for database access on Repo related operations.
- */
 @Dao
 public abstract class RepoDao {
 
@@ -88,6 +85,9 @@ public abstract class RepoDao {
 
     @Query("SELECT * FROM Repo WHERE id in (:repoIds)")
     protected abstract LiveData<List<Repo>> loadById(List<Integer> repoIds);
+
+    @Query("SELECT * FROM Repo ORDER BY forks DESC")
+    public abstract LiveData<List<Repo>> loadByForks();
 
     @Query("SELECT * FROM RepoSearchResult WHERE query = :query")
     public abstract RepoSearchResult findSearchResult(String query);
