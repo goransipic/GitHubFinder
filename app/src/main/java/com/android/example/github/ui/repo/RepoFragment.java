@@ -74,8 +74,8 @@ public class RepoFragment extends Fragment implements LifecycleRegistryOwner, In
             binding.executePendingBindings();
         });
 
-        /*ContributorAdapter adapter = new ContributorAdapter(dataBindingComponent,
-                contributor -> );*/
+        ContributorAdapter adapter = new ContributorAdapter(dataBindingComponent,
+                contributor -> navigationController.navigateToUser(contributor.getLogin()) );
         this.adapter = adapter;
         binding.contributorList.setAdapter(adapter);
         initContributorList(repoViewModel);
@@ -83,12 +83,9 @@ public class RepoFragment extends Fragment implements LifecycleRegistryOwner, In
 
     private void initContributorList(RepoViewModel viewModel) {
         viewModel.getContributors().observe(this, listResource -> {
-            // we don't need any null checks here for the adapter since LiveData guarantees that
-            // it won't call us if fragment is stopped or not started.
             if (listResource != null && listResource.data != null) {
                 adapter.replace(listResource.data);
             } else {
-                //noinspection ConstantConditions
                 adapter.replace(Collections.emptyList());
             }
         });

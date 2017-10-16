@@ -20,13 +20,14 @@ public class MainActivity extends AppCompatActivity implements HasSupportFragmen
     @Inject
     DispatchingAndroidInjector<Fragment> dispatchingAndroidInjector;
 
-    @Inject
+
     NavigationController navigationController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        navigationController = new NavigationController(this);
         if (savedInstanceState == null) {
             navigationController.navigateToSearch();
         }

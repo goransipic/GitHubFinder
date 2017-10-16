@@ -29,7 +29,7 @@ public class UserFragment extends LifecycleFragment implements Injectable {
     private static final String LOGIN_KEY = "login";
     @Inject
     ViewModelProvider.Factory viewModelFactory;
-    @Inject
+
     NavigationController navigationController;
 
     android.databinding.DataBindingComponent dataBindingComponent = new FragmentDataBindingComponent(this);

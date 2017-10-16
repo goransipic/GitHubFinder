@@ -14,6 +14,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.util.Pair;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -55,7 +56,7 @@ public class SearchFragment extends LifecycleFragment implements Injectable {
     @Inject
     ViewModelProvider.Factory viewModelFactory;
 
-    @Inject
+
     NavigationController navigationController;
 
     DataBindingComponent dataBindingComponent = new FragmentDataBindingComponent(this);
@@ -84,6 +85,7 @@ public class SearchFragment extends LifecycleFragment implements Injectable {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        navigationController = new NavigationController((AppCompatActivity) this.getActivity());
         searchViewModel = ViewModelProviders.of(this, viewModelFactory).get(SearchViewModel.class);
         initRecyclerView();
         RepoListAdapter rvAdapter = new RepoListAdapter(dataBindingComponent,

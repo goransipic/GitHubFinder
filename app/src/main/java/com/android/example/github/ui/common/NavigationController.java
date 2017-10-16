@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
+import android.support.v7.app.AppCompatActivity;
 
 import com.android.example.github.MainActivity;
 import com.android.example.github.R;
@@ -25,8 +26,8 @@ public class NavigationController {
     private final int containerId;
     private final FragmentManager fragmentManager;
     private final Activity activity;
-    @Inject
-    public NavigationController(MainActivity mainActivity) {
+
+    public NavigationController(AppCompatActivity mainActivity) {
         this.containerId = R.id.container;
         this.fragmentManager = mainActivity.getSupportFragmentManager();
         this.activity = mainActivity;
