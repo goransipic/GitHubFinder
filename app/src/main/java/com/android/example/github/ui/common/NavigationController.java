@@ -1,14 +1,21 @@
 package com.android.example.github.ui.common;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 
 import com.android.example.github.MainActivity;
 import com.android.example.github.R;
+import com.android.example.github.ui.repo.RepoActivity;
 import com.android.example.github.ui.repo.RepoFragment;
 import com.android.example.github.ui.search.SearchFragment;
 import com.android.example.github.ui.user.UserFragment;
 
 import javax.inject.Inject;
+
+import static com.android.example.github.ui.repo.RepoFragment.REPO_NAME_KEY;
+import static com.android.example.github.ui.repo.RepoFragment.REPO_OWNER_KEY;
 
 /**
  * Created by gsipic on 14.10.17..
@@ -17,10 +24,12 @@ import javax.inject.Inject;
 public class NavigationController {
     private final int containerId;
     private final FragmentManager fragmentManager;
+    private final Activity activity;
     @Inject
     public NavigationController(MainActivity mainActivity) {
         this.containerId = R.id.container;
         this.fragmentManager = mainActivity.getSupportFragmentManager();
+        this.activity = mainActivity;
     }
 
     public void navigateToSearch() {
@@ -31,12 +40,7 @@ public class NavigationController {
     }
 
     public void navigateToRepo(String owner, String name) {
-        /*RepoFragment fragment = RepoFragment.create(owner, name);
-        String tag = "repo" + "/" + owner + "/" + name;
-        fragmentManager.beginTransaction()
-                .replace(containerId, fragment, tag)
-                .addToBackStack(null)
-                .commitAllowingStateLoss();*/
+        RepoActivity.start(activity,owner,name);
     }
 
     public void navigateToUser(String login) {

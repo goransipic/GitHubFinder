@@ -32,9 +32,9 @@ import javax.inject.Inject;
 
 public class RepoFragment extends Fragment implements LifecycleRegistryOwner, Injectable {
 
-    private static final String REPO_OWNER_KEY = "repo_owner";
+    public static final String REPO_OWNER_KEY = "repo_owner";
 
-    private static final String REPO_NAME_KEY = "repo_name";
+    public static final String REPO_NAME_KEY = "repo_name";
 
     private final LifecycleRegistry lifecycleRegistry = new LifecycleRegistry(this);
 
@@ -43,7 +43,7 @@ public class RepoFragment extends Fragment implements LifecycleRegistryOwner, In
 
     private RepoViewModel repoViewModel;
 
-    @Inject
+
     NavigationController navigationController;
 
     DataBindingComponent dataBindingComponent = new FragmentDataBindingComponent(this);
@@ -74,8 +74,8 @@ public class RepoFragment extends Fragment implements LifecycleRegistryOwner, In
             binding.executePendingBindings();
         });
 
-        ContributorAdapter adapter = new ContributorAdapter(dataBindingComponent,
-                contributor -> navigationController.navigateToUser(contributor.getLogin()));
+        /*ContributorAdapter adapter = new ContributorAdapter(dataBindingComponent,
+                contributor -> );*/
         this.adapter = adapter;
         binding.contributorList.setAdapter(adapter);
         initContributorList(repoViewModel);

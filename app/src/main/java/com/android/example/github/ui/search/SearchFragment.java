@@ -35,6 +35,7 @@ import com.android.example.github.di.Injectable;
 import com.android.example.github.ui.common.NavigationController;
 import com.android.example.github.ui.common.RepoListAdapter;
 import com.android.example.github.ui.common.RetryCallback;
+import com.android.example.github.ui.repo.RepoActivity;
 import com.android.example.github.vo.FilterBy;
 import com.android.example.github.vo.Repo;
 import com.android.example.github.vo.Resource;
@@ -86,7 +87,7 @@ public class SearchFragment extends LifecycleFragment implements Injectable {
         searchViewModel = ViewModelProviders.of(this, viewModelFactory).get(SearchViewModel.class);
         initRecyclerView();
         RepoListAdapter rvAdapter = new RepoListAdapter(dataBindingComponent,
-                repo -> navigationController.navigateToRepo(repo.owner.login, repo.name));
+                repo -> RepoActivity.start(this.getContext(),repo.owner.login,repo.name));
         binding.repoList.setAdapter(rvAdapter);
         adapter = rvAdapter;
 
