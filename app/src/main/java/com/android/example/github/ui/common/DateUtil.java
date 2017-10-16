@@ -11,7 +11,7 @@ public class DateUtil {
 
     private static final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
-    public static String formatDate(Date date) {
+    public static CharSequence formatDate(Date date) {
        return simpleDateFormat.format(date);
     }
 

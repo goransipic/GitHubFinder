@@ -10,6 +10,7 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,6 +60,7 @@ public class RepoFragment extends Fragment implements LifecycleRegistryOwner, In
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        navigationController = new NavigationController((AppCompatActivity) this.getActivity());
         repoViewModel = ViewModelProviders.of(this, viewModelFactory).get(RepoViewModel.class);
         Bundle args = getArguments();
         if (args != null && args.containsKey(REPO_OWNER_KEY) &&

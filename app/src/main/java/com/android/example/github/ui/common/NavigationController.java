@@ -45,11 +45,11 @@ public class NavigationController {
     }
 
     public void navigateToUser(String login) {
-        /*String tag = "user" + "/" + login;
+        String tag = "user" + "/" + login;
         UserFragment userFragment = UserFragment.create(login);
         fragmentManager.beginTransaction()
                 .replace(containerId, userFragment, tag)
                 .addToBackStack(null)
-                .commitAllowingStateLoss();*/
+                .commitAllowingStateLoss();
     }
 }
