@@ -5,7 +5,7 @@ package com.android.example.github.vo;
  */
 
 public enum FilterBy {
-    STARS("stars"),FORKS("forks"),UPDATED("date");
+    STARS("stars"),FORKS("forks"),UPDATED("updatedate");
 
     String type;
 

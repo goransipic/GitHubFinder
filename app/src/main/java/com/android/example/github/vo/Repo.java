@@ -27,13 +27,17 @@ public class Repo {
     public final int issues;
     @SerializedName("stargazers_count")
     public final int stars;
+    @SerializedName("html_url")
+    public final String htmlUrl;
+    @SerializedName("created_at")
+    public final Date createdate;
     @SerializedName("updated_at")
-    public final Date date;
+    public final Date updatedate;
     @SerializedName("owner")
     @Embedded(prefix = "owner_")
     public final Owner owner;
 
-    public Repo(int id, String name, Owner owner, int watchers, int forks ,int issues, int stars, Date date) {
+    public Repo(int id, String name, Owner owner, int watchers, int forks ,int issues, int stars, String htmlUrl,Date createdate,Date updatedate) {
         this.id = id;
         this.name = name;
         this.owner = owner;
@@ -41,7 +45,9 @@ public class Repo {
         this.forks = forks;
         this.issues = issues;
         this.stars = stars;
-        this.date = date;
+        this.htmlUrl = htmlUrl;
+        this.createdate = createdate;
+        this.updatedate = updatedate;
     }
 
     public static class Owner {

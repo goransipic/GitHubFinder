@@ -28,10 +28,8 @@ import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.OnConflictStrategy;
 import android.arch.persistence.room.Query;
 import android.arch.persistence.room.RoomWarnings;
-import android.util.SparseIntArray;
 
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 @Dao
@@ -79,7 +77,7 @@ public abstract class RepoDao {
                     Collections.sort(repositories, (o1, o2) -> (o2.stars < o1.stars) ? -1 : ((o2.stars == o1.stars) ? 0 : 1));
                     break;
                 case UPDATED:
-                    Collections.sort(repositories, (o1, o2) -> (o2.date.getTime() < o1.date.getTime()) ? -1 : ((o2.date.getTime() == o1.date.getTime()) ? 0 : 1));
+                    Collections.sort(repositories, (o1, o2) -> (o2.updatedate.getTime() < o1.updatedate.getTime()) ? -1 : ((o2.updatedate.getTime() == o1.updatedate.getTime()) ? 0 : 1));
                     break;
                 default:
             }
@@ -97,7 +95,7 @@ public abstract class RepoDao {
     @Query("SELECT * FROM Repo ORDER BY stars DESC")
     public abstract LiveData<List<Repo>> loadByStars();
 
-    @Query("SELECT * FROM Repo ORDER BY date DESC")
+    @Query("SELECT * FROM Repo ORDER BY updatedate DESC")
     public abstract LiveData<List<Repo>> loadByDate();
 
     @Query("SELECT * FROM RepoSearchResult WHERE query = :query")
