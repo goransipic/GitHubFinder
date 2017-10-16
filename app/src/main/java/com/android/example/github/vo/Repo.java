@@ -33,11 +33,25 @@ public class Repo {
     public final Date createdate;
     @SerializedName("updated_at")
     public final Date updatedate;
+    @SerializedName("language")
+    public final String language;
     @SerializedName("owner")
     @Embedded(prefix = "owner_")
     public final Owner owner;
 
-    public Repo(int id, String name, Owner owner, int watchers, int forks ,int issues, int stars, String htmlUrl,Date createdate,Date updatedate) {
+    public Repo(
+            int id,
+            String name,
+            Owner owner,
+            int watchers,
+            int forks,
+            int issues,
+            int stars,
+            String htmlUrl,
+            String language,
+            Date createdate,
+            Date updatedate) {
+
         this.id = id;
         this.name = name;
         this.owner = owner;
@@ -46,6 +60,7 @@ public class Repo {
         this.issues = issues;
         this.stars = stars;
         this.htmlUrl = htmlUrl;
+        this.language = language;
         this.createdate = createdate;
         this.updatedate = updatedate;
     }

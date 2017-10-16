@@ -5,6 +5,7 @@
     <data>
         <import type="com.android.example.github.vo.Status"/>
         <import type="com.android.example.github.vo.Resource"/>
+        <import type="com.android.example.github.ui.common.DateUtil" />
         <variable
             name="repo"
             type="com.android.example.github.vo.Repo"/>
@@ -34,6 +35,7 @@
             app:layout_constraintTop_toTopOf="parent" tools:text="name of the user"/>
         <TextView
             android:id="@+id/description"
+            android:text="@{repo.name}"
             style="@style/TextAppearance.AppCompat.Body1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -48,11 +50,17 @@
             app:layoutManager="LinearLayoutManager"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="0dp"
             android:layout_marginEnd="8dp" android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp" app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/description" tools:listitem="@layout/contributor_item"/>
+            tools:listitem="@layout/contributor_item"
+            android:layout_marginRight="8dp"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/date_updated"
+            android:layout_marginLeft="8dp"
+            app:layout_constraintLeft_toLeftOf="@+id/date_updated" />
         <include layout="@layout/loading_state"
                  app:resource="@{repoResource}"
                  app:callback="@{() -> retryCallback.retry()}"
@@ -63,5 +71,38 @@
                  android:layout_marginEnd="8dp" app:layout_constraintBottom_toBottomOf="parent"
                  android:layout_marginBottom="8dp" android:layout_marginTop="8dp"
                  app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/language"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintLeft_toLeftOf="@+id/description"
+            app:layout_constraintTop_toBottomOf="@+id/description"
+            android:text="@{repo.language}"
+            tools:text="ime programskog jezika" />
+
+        <TextView
+            android:id="@+id/date_created"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="8dp"
+            android:text="@{DateUtil.formatDate(repo.createdate)}"
+            app:layout_constraintLeft_toLeftOf="@+id/language"
+            app:layout_constraintTop_toBottomOf="@+id/language"
+            tools:text="date created" />
+
+        <TextView
+            android:id="@+id/date_updated"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="8dp"
+            android:text=""
+            app:layout_constraintLeft_toLeftOf="@+id/date_created"
+            app:layout_constraintTop_toBottomOf="@+id/date_created"
+            tools:text="date updated" />
     </android.support.constraint.ConstraintLayout>
 </layout>

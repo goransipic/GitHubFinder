@@ -18,6 +18,7 @@ import com.android.example.github.R;
 import com.android.example.github.binding.FragmentDataBindingComponent;
 import com.android.example.github.databinding.RepoFragmentBinding;
 import com.android.example.github.di.Injectable;
+import com.android.example.github.ui.common.DateUtil;
 import com.android.example.github.ui.common.NavigationController;
 import com.android.example.github.vo.Repo;
 import com.android.example.github.vo.Resource;
