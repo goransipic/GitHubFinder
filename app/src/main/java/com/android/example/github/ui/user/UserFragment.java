@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DividerItemDecoration;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,7 +28,7 @@ import javax.inject.Inject;
  */
 
 public class UserFragment extends LifecycleFragment implements Injectable {
-    private static final String LOGIN_KEY = "login";
+    public static final String LOGIN_KEY = "login";
     @Inject
     ViewModelProvider.Factory viewModelFactory;
 
@@ -61,6 +62,10 @@ public class UserFragment extends LifecycleFragment implements Injectable {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        ((AppCompatActivity)getActivity()).setSupportActionBar(binding.toolbar);
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("");
+
         userViewModel = ViewModelProviders.of(this, viewModelFactory).get(UserViewModel.class);
         userViewModel.setLogin(getArguments().getString(LOGIN_KEY));
         userViewModel.getUser().observe(this, userResource -> {
@@ -69,7 +74,9 @@ public class UserFragment extends LifecycleFragment implements Injectable {
             binding.executePendingBindings();
         });
         RepoListAdapter rvAdapter = new RepoListAdapter(dataBindingComponent,
-                repo -> navigationController.navigateToRepo(repo.owner.login, repo.name));
+                repo -> navigationController.navigateToRepo(repo.owner.login, repo.name), repo -> navigationController.navigateToRepo(repo.owner.login, repo.name));
+        binding.repoList.addItemDecoration(new DividerItemDecoration(binding.repoList.getContext(),
+                DividerItemDecoration.VERTICAL));
         binding.repoList.setAdapter(rvAdapter);
         this.adapter = rvAdapter;
         initRepoList();

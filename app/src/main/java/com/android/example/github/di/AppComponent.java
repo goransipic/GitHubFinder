@@ -3,6 +3,7 @@ package com.android.example.github.di;
 import android.app.Application;
 
 import com.android.example.github.GithubApp;
+import com.android.example.github.ui.user.UserActivity;
 
 import javax.inject.Singleton;
 
@@ -18,7 +19,8 @@ import dagger.android.AndroidInjectionModule;
         AndroidInjectionModule.class,
         AppModule.class,
         MainActivityModule.class,
-        RepoActivityModule.class
+        RepoActivityModule.class,
+        UserActivityModule.class
 })
 public interface AppComponent {
 

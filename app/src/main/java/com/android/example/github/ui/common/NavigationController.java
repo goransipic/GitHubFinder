@@ -11,6 +11,7 @@ import com.android.example.github.R;
 import com.android.example.github.ui.repo.RepoActivity;
 import com.android.example.github.ui.repo.RepoFragment;
 import com.android.example.github.ui.search.SearchFragment;
+import com.android.example.github.ui.user.UserActivity;
 import com.android.example.github.ui.user.UserFragment;
 
 import javax.inject.Inject;
@@ -41,15 +42,10 @@ public class NavigationController {
     }
 
     public void navigateToRepo(String owner, String name) {
-        RepoActivity.start(activity,owner,name);
+        RepoActivity.start(activity, owner, name);
     }
 
     public void navigateToUser(String login) {
-        String tag = "user" + "/" + login;
-        UserFragment userFragment = UserFragment.create(login);
-        fragmentManager.beginTransaction()
-                .replace(containerId, userFragment, tag)
-                .addToBackStack(null)
-                .commitAllowingStateLoss();
+        UserActivity.start(activity, login);
     }
 }

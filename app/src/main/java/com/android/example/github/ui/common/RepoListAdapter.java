@@ -20,11 +20,13 @@ import com.android.example.github.vo.Repo;
 public class RepoListAdapter extends DataBoundListAdapter<Repo, RepoItemBinding> {
     private final android.databinding.DataBindingComponent dataBindingComponent;
     private final RepoClickCallback repoClickCallback;
+    private final RepoClickCallback repoClickCallbackAvatar;
 
     public RepoListAdapter(DataBindingComponent dataBindingComponent,
-            RepoClickCallback repoClickCallback) {
+            RepoClickCallback repoClickCallback, RepoClickCallback repoClickCallbackAvatar) {
         this.dataBindingComponent = dataBindingComponent;
         this.repoClickCallback = repoClickCallback;
+        this.repoClickCallbackAvatar = repoClickCallbackAvatar;
     }
 
     @Override
@@ -38,6 +40,10 @@ public class RepoListAdapter extends DataBoundListAdapter<Repo, RepoItemBinding>
                 repoClickCallback.onClick(repo);
             }
         });
+        binding.avatarImage.setOnClickListener(v -> { Repo repo = binding.getRepo();
+            if (repo != null && repoClickCallback != null) {
+                repoClickCallbackAvatar.onClick(repo);
+            } });
         return binding;
     }
 

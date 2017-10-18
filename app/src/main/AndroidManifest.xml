@@ -22,8 +22,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:label="@string/title_activity_repo"
             android:name=".ui.repo.RepoActivity"
+            android:label="@string/title_activity_repo"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".ui.user.UserActivity"
+            android:theme="@style/AppTheme.NoActionBar"
             android:parentActivityName=".MainActivity"/>
     </application>
 

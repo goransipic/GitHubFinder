@@ -22,55 +22,51 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
-            android:id="@+id/header"
-            android:layout_width="368dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:orientation="horizontal"
-            app:layout_constraintTop_toTopOf="parent"
-            app:visibleGone="@{user != null}"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="8dp">
-
-            <ImageView
-                android:id="@+id/avatar"
-                android:layout_width="@dimen/photo_size"
-                android:layout_height="@dimen/photo_size"
-                android:background="@mipmap/ic_launcher"
-                android:contentDescription="@string/a11y_user_photo"
-                android:scaleType="centerCrop"
-                app:imageUrl="@{user.avatarUrl}"
-                tools:layout_editor_absoluteX="8dp"
-                tools:layout_editor_absoluteY="8dp" />
-
-            <TextView
-                android:id="@+id/repo_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/default_margin"
-                android:layout_marginStart="@dimen/default_margin"
-                android:layout_marginTop="@dimen/default_margin"
-                android:contentDescription="@string/a11y_user_name"
-                android:text="@{user.name ?? user.login}"
-                app:layout_constraintStart_toEndOf="@+id/avatar"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="albert einstein" />
-        </LinearLayout>
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/repo_list"
+        <ImageView
+            android:id="@+id/avatar"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginTop="8dp"
-            app:layoutManager="LinearLayoutManager"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/header"
-            tools:layout_editor_absoluteX="8dp"
-            tools:listitem="@layout/repo_item" />
+            android:contentDescription="@string/a11y_user_photo"
+            android:scaleType="centerInside"
+            app:imageUrl="@{user.avatarUrl}"
+            app:layout_constraintBottom_toTopOf="@+id/repo_name"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:layout_constraintHorizontal_bias="0.0"
+            android:layout_marginTop="16dp" />
+
+        <TextView
+            android:id="@+id/repo_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="24dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="@dimen/default_margin"
+            android:contentDescription="@string/a11y_user_name"
+            android:text="@{user.name ?? user.login}"
+            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+            app:layout_constraintBottom_toBottomOf="@+id/toolbar"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/avatar"
+            app:layout_constraintVertical_bias="0.5"
+            tools:text="albert einstein"
+            tools:layout_editor_absoluteX="0dp"
+            android:layout_marginBottom="8dp" />
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+
+        </android.support.v7.widget.Toolbar>
+
 
         <include
             layout="@layout/loading_state"
@@ -85,5 +81,21 @@
             app:layout_constraintTop_toTopOf="parent"
             app:resource="@{userResource}"
             tools:layout_editor_absoluteX="140dp" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/repo_list"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="0dp"
+            app:layoutManager="LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            app:layout_constraintVertical_bias="0.0"
+            tools:listitem="@layout/repo_item" />
     </android.support.constraint.ConstraintLayout>
 </layout>
