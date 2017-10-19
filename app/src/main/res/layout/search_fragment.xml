@@ -3,10 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
     <data>
-        <import type="com.android.example.github.vo.Repo"/>
+        <import type="com.android.example.github.valueobjects.Repo"/>
         <import type="java.util.List"/>
-        <import type="com.android.example.github.vo.Status"/>
-        <import type="com.android.example.github.vo.Resource"/>
+        <import type="com.android.example.github.valueobjects.Status"/>
+        <import type="com.android.example.github.valueobjects.Resource"/>
         <variable name="resultCount" type="int"/>
         <variable name="query" type="String"/>
         <variable name="loadingMore" type="boolean"/>

@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package com.android.example.github.db;
+package com.android.example.github.database;
 
-import com.android.example.github.vo.Contributor;
-import com.android.example.github.vo.FilterBy;
-import com.android.example.github.vo.Repo;
-import com.android.example.github.vo.RepoSearchResult;
+import com.android.example.github.valueobjects.Contributor;
+import com.android.example.github.valueobjects.FilterBy;
+import com.android.example.github.valueobjects.Repo;
+import com.android.example.github.valueobjects.RepoSearchResult;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.Transformations;

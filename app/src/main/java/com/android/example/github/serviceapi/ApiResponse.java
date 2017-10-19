@@ -1,4 +1,4 @@
-package com.android.example.github.api;
+package com.android.example.github.serviceapi;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;

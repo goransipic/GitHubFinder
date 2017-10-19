@@ -1,4 +1,4 @@
-package com.android.example.github.vo;
+package com.android.example.github.valueobjects;
 
 /**
  * Created by gsipic on 15.10.17..

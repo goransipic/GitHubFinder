@@ -7,7 +7,7 @@
 
         <variable
             name="repo"
-            type="com.android.example.github.vo.Repo" />
+            type="com.android.example.github.valueobjects.Repo" />
     </data>
 
     <android.support.constraint.ConstraintLayout

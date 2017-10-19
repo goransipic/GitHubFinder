@@ -1,11 +1,11 @@
-package com.android.example.github.vo;
+package com.android.example.github.valueobjects;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
-import static com.android.example.github.vo.Status.ERROR;
-import static com.android.example.github.vo.Status.LOADING;
-import static com.android.example.github.vo.Status.SUCCESS;
+import static com.android.example.github.valueobjects.Status.ERROR;
+import static com.android.example.github.valueobjects.Status.LOADING;
+import static com.android.example.github.valueobjects.Status.SUCCESS;
 
 /**
  * Created by gsipic on 14.10.17..

@@ -3,12 +3,12 @@ package com.android.example.github.repository;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 
-import com.android.example.github.api.ApiResponse;
-import com.android.example.github.api.GithubService;
-import com.android.example.github.api.RepoSearchResponse;
-import com.android.example.github.db.GithubDb;
-import com.android.example.github.vo.RepoSearchResult;
-import com.android.example.github.vo.Resource;
+import com.android.example.github.serviceapi.ApiResponse;
+import com.android.example.github.serviceapi.GithubService;
+import com.android.example.github.serviceapi.RepoSearchResponse;
+import com.android.example.github.database.GithubDb;
+import com.android.example.github.valueobjects.RepoSearchResult;
+import com.android.example.github.valueobjects.Resource;
 
 import java.io.IOException;
 import java.util.ArrayList;

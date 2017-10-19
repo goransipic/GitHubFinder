@@ -1,10 +1,10 @@
-package com.android.example.github.vo;
+package com.android.example.github.valueobjects;
 
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.TypeConverters;
 import android.support.annotation.Nullable;
 
-import com.android.example.github.db.GithubTypeConverters;
+import com.android.example.github.database.GithubTypeConverters;
 
 import java.util.List;
 

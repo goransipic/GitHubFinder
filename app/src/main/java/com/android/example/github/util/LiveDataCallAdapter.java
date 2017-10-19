@@ -2,7 +2,7 @@ package com.android.example.github.util;
 
 import android.arch.lifecycle.LiveData;
 
-import com.android.example.github.api.ApiResponse;
+import com.android.example.github.serviceapi.ApiResponse;
 
 import java.lang.reflect.Type;
 import java.util.concurrent.atomic.AtomicBoolean;

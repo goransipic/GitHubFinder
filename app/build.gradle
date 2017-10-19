@@ -81,5 +81,4 @@ dependencies {
     androidTestCompile("android.arch.core:core-testing:$arch_version", {
     })
     androidTestCompile "org.mockito:mockito-android:$mockito_version"
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
 }

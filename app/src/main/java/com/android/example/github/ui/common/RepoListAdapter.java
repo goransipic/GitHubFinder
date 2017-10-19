@@ -3,13 +3,12 @@ package com.android.example.github.ui.common;
 import android.databinding.DataBindingComponent;
 import android.databinding.DataBindingUtil;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import com.android.example.github.R;
 import com.android.example.github.databinding.RepoItemBinding;
 import com.android.example.github.util.Objects;
-import com.android.example.github.vo.Repo;
+import com.android.example.github.valueobjects.Repo;
 
 
 

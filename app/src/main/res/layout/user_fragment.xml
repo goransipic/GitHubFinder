@@ -5,15 +5,15 @@
 
     <data>
 
-        <import type="com.android.example.github.vo.Status"/>
+        <import type="com.android.example.github.valueobjects.Status"/>
 
         <variable
             name="user"
-            type="com.android.example.github.vo.User" />
+            type="com.android.example.github.valueobjects.User" />
 
         <variable
             name="userResource"
-            type="com.android.example.github.vo.Resource" />
+            type="com.android.example.github.valueobjects.Resource" />
 
         <variable
             name="retryCallback"

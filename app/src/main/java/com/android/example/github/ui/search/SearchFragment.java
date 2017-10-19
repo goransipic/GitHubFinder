@@ -1,7 +1,6 @@
 package com.android.example.github.ui.search;
 
 import android.arch.lifecycle.LifecycleFragment;
-import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
@@ -11,7 +10,6 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.util.Pair;
 import android.support.v7.app.AppCompatActivity;
@@ -27,21 +25,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.TextView;
 
 import com.android.example.github.R;
 import com.android.example.github.binding.FragmentDataBindingComponent;
 import com.android.example.github.databinding.SearchFragmentBinding;
-import com.android.example.github.di.Injectable;
+import com.android.example.github.dependencyinjection.Injectable;
 import com.android.example.github.ui.common.NavigationController;
 import com.android.example.github.ui.common.RepoListAdapter;
-import com.android.example.github.ui.common.RetryCallback;
 import com.android.example.github.ui.repo.RepoActivity;
-import com.android.example.github.vo.FilterBy;
-import com.android.example.github.vo.Repo;
-import com.android.example.github.vo.Resource;
-
-import java.util.List;
+import com.android.example.github.valueobjects.FilterBy;
 
 import javax.inject.Inject;
 

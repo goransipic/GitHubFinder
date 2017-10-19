@@ -1,4 +1,4 @@
-package com.android.example.github.di;
+package com.android.example.github.dependencyinjection;
 
 import android.app.Activity;
 import android.app.Application;
