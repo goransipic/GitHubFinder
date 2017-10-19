@@ -5,6 +5,8 @@
 
     <data>
 
+        <import type="com.android.example.github.vo.Status"/>
+
         <variable
             name="user"
             type="com.android.example.github.vo.User" />
@@ -38,9 +40,9 @@
             android:layout_width="0dp"
             android:layout_height="200dp"
             android:layout_marginTop="16dp"
+            android:clickable="true"
             android:contentDescription="@string/a11y_user_photo"
             android:scaleType="centerInside"
-            android:clickable="true"
             app:imageUrl="@{user.avatarUrl}"
             app:layout_constraintBottom_toTopOf="@+id/repo_name"
             app:layout_constraintHorizontal_bias="0.0"
@@ -70,10 +72,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="0dp"
+            android:layout_marginTop="8dp"
             android:text="Company:"
             android:textAppearance="@style/TextAppearance.AppCompat.Title"
             app:layout_constraintLeft_toLeftOf="@+id/name"
-            android:layout_marginTop="8dp"
             app:layout_constraintTop_toBottomOf="@+id/name" />
 
         <TextView
@@ -89,12 +91,13 @@
 
         <TextView
             android:id="@+id/company_value"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="28dp"
             android:layout_marginLeft="16dp"
-            android:layout_marginRight="8dp"
+            android:layout_marginRight="16dp"
             android:text="@{user.company}"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+            app:autoSizeTextType="uniform"
             app:layout_constraintBaseline_toBaselineOf="@+id/company"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toRightOf="@+id/company"
@@ -103,12 +106,13 @@
 
         <TextView
             android:id="@+id/email_value"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="28dp"
             android:layout_marginLeft="0dp"
-            android:layout_marginRight="8dp"
+            android:layout_marginRight="16dp"
             android:text="@{user.email}"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+            app:autoSizeTextType="uniform"
             app:layout_constraintBaseline_toBaselineOf="@+id/email"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toLeftOf="@+id/company_value"
@@ -128,14 +132,15 @@
 
         <TextView
             android:id="@+id/name_value"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="28dp"
             android:layout_marginLeft="0dp"
-            android:layout_marginRight="8dp"
+            android:layout_marginRight="16dp"
             android:text="@{user.name}"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+            app:autoSizeTextType="uniform"
             app:layout_constraintBaseline_toBaselineOf="@+id/name"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="0.01"
             app:layout_constraintLeft_toLeftOf="@+id/company_value"
             app:layout_constraintRight_toRightOf="parent"
             tools:text="ime" />

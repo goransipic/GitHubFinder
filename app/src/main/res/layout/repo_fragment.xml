@@ -34,31 +34,15 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/repo_name"
-            style="@style/TextAppearance.AppCompat.Headline"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            app:text="@{repo.owner.login}"
-            app:url="@{repo.htmlUrl}"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:visibleGone="@{repo != null}"
-            tools:text="name of the user" />
-
-        <TextView
             android:id="@+id/description"
             style="@style/TextAppearance.AppCompat.Body1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginLeft="66dp"
             android:text="@{repo.name}"
+            app:layout_constraintBaseline_toBaselineOf="@+id/Name"
+            app:layout_constraintLeft_toRightOf="@+id/Name"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/repo_name"
             app:visibleGone="@{repo != null}"
             tools:text="description of the user" />
 
@@ -98,36 +82,39 @@
 
         <TextView
             android:id="@+id/language"
-            style="@style/TextAppearance.AppCompat.Body1"
+            style="@style/TextAppearance.AppCompat.Body2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="0dp"
             android:layout_marginTop="8dp"
             android:text="Language:"
-            app:layout_constraintLeft_toLeftOf="@+id/description"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            app:layout_constraintLeft_toLeftOf="@+id/Name"
             app:layout_constraintTop_toBottomOf="@+id/description"
             tools:text="ime programskog jezika" />
 
         <TextView
             android:id="@+id/date_created"
-            style="@style/TextAppearance.AppCompat.Body1"
+            style="@style/TextAppearance.AppCompat.Body2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="0dp"
             android:layout_marginTop="8dp"
             android:text="Date Created:"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             app:layout_constraintLeft_toLeftOf="@+id/language"
             app:layout_constraintTop_toBottomOf="@+id/language"
             tools:text="date created" />
 
         <TextView
             android:id="@+id/date_updated"
-            style="@style/TextAppearance.AppCompat.Body1"
+            style="@style/TextAppearance.AppCompat.Body2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="0dp"
             android:layout_marginTop="8dp"
             android:text="Date updated:"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             app:layout_constraintLeft_toLeftOf="@+id/date_created"
             app:layout_constraintTop_toBottomOf="@+id/date_created"
             tools:text="date updated" />
@@ -161,5 +148,17 @@
             android:text="@{repo.updatedate.toLocaleString()}"
             app:layout_constraintBaseline_toBaselineOf="@+id/date_updated"
             app:layout_constraintLeft_toRightOf="@+id/date_updated" />
+
+        <TextView
+            android:id="@+id/Name"
+            style="@style/TextAppearance.AppCompat.Body2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="7dp"
+            android:text="Name:"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
     </android.support.constraint.ConstraintLayout>
 </layout>
