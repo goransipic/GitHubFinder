@@ -38,8 +38,8 @@ public class BindingAdapters {
 
     @BindingAdapter(value={"text","url"})
     public static void setLinkifyText(TextView textView, String text, String url) {
-        textView.setTextColor(ContextCompat.getColor(textView.getContext(),R.color.colorPrimary));
-        textView.setPaintFlags(textView.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+        //textView.setTextColor(ContextCompat.getColor(textView.getContext(),R.color.colorPrimary));
+        //textView.setPaintFlags(textView.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         textView.setText(text);
         //textView.setLinkTextColor(Color.parseColor("#2f6699"));
         LinkifyHelper.addLink(textView,url);

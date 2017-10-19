@@ -56,7 +56,6 @@ public class SearchFragment extends LifecycleFragment implements Injectable {
     @Inject
     ViewModelProvider.Factory viewModelFactory;
 
-
     NavigationController navigationController;
 
     DataBindingComponent dataBindingComponent = new FragmentDataBindingComponent(this);

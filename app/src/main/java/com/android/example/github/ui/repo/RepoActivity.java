@@ -35,6 +35,7 @@ public class RepoActivity extends AppCompatActivity implements HasSupportFragmen
 
         String owner = getIntent().getStringExtra(REPO_OWNER_KEY);
         String name = getIntent().getStringExtra(REPO_NAME_KEY);
+        setTitle(owner);
 
         if (savedInstanceState == null) {
             RepoFragment fragment = RepoFragment.create(owner, name);
