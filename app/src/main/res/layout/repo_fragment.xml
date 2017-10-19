@@ -38,7 +38,7 @@
             style="@style/TextAppearance.AppCompat.Body1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="87dp"
+            android:layout_marginLeft="66dp"
             android:text="@{repo.name}"
             app:layout_constraintBaseline_toBaselineOf="@+id/Name"
             app:layout_constraintLeft_toRightOf="@+id/Name"
@@ -82,20 +82,20 @@
 
         <TextView
             android:id="@+id/language"
-            style="@style/TextAppearance.AppCompat.Large"
+            style="@style/TextAppearance.AppCompat.Body2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="0dp"
             android:layout_marginTop="8dp"
             android:text="Language:"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display2"
             app:layout_constraintLeft_toLeftOf="@+id/Name"
             app:layout_constraintTop_toBottomOf="@+id/description"
             tools:text="ime programskog jezika" />
 
         <TextView
             android:id="@+id/date_created"
-            style="@style/TextAppearance.AppCompat.Large"
+            style="@style/TextAppearance.AppCompat.Body2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="0dp"
