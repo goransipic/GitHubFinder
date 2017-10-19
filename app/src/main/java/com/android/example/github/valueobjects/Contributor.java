@@ -1,4 +1,4 @@
-package com.android.example.github.vo;
+package com.android.example.github.valueobjects;
 
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;

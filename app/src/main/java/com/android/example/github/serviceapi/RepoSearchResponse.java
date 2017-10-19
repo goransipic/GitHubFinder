@@ -1,8 +1,8 @@
-package com.android.example.github.api;
+package com.android.example.github.serviceapi;
 
 import android.support.annotation.NonNull;
 
-import com.android.example.github.vo.Repo;
+import com.android.example.github.valueobjects.Repo;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;

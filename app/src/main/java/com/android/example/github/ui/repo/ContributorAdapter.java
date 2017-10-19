@@ -20,7 +20,7 @@ import com.android.example.github.R;
 import com.android.example.github.databinding.ContributorItemBinding;
 import com.android.example.github.ui.common.DataBoundListAdapter;
 import com.android.example.github.util.Objects;
-import com.android.example.github.vo.Contributor;
+import com.android.example.github.valueobjects.Contributor;
 
 import android.databinding.DataBindingComponent;
 import android.databinding.DataBindingUtil;

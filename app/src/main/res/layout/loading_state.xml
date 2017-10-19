@@ -2,8 +2,8 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
-        <import type="com.android.example.github.vo.Resource"/>
-        <import type="com.android.example.github.vo.Status"/>
+        <import type="com.android.example.github.valueobjects.Resource"/>
+        <import type="com.android.example.github.valueobjects.Status"/>
         <variable name="resource" type="Resource"/>
         <variable name="callback" type="com.android.example.github.ui.common.RetryCallback"/>
     </data>

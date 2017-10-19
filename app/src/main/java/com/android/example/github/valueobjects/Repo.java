@@ -1,6 +1,6 @@
-package com.android.example.github.vo;
+package com.android.example.github.valueobjects;
 
-import com.android.example.github.db.GithubTypeConverters;
+import com.android.example.github.database.GithubTypeConverters;
 import com.google.gson.annotations.SerializedName;
 
 import android.arch.persistence.room.Embedded;

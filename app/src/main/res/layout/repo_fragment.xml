@@ -5,15 +5,15 @@
 
     <data>
 
-        <import type="com.android.example.github.vo.Status" />
+        <import type="com.android.example.github.valueobjects.Status" />
 
-        <import type="com.android.example.github.vo.Resource" />
+        <import type="com.android.example.github.valueobjects.Resource" />
 
         <import type="com.android.example.github.ui.common.DateUtil" />
 
         <variable
             name="repo"
-            type="com.android.example.github.vo.Repo" />
+            type="com.android.example.github.valueobjects.Repo" />
 
         <variable
             name="repoResource"
@@ -21,7 +21,7 @@
 
         <variable
             name="contributorsStatus"
-            type="com.android.example.github.vo.Status" />
+            type="com.android.example.github.valueobjects.Status" />
 
         <variable
             name="retryCallback"
@@ -38,7 +38,7 @@
             style="@style/TextAppearance.AppCompat.Body1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="66dp"
+            android:layout_marginLeft="87dp"
             android:text="@{repo.name}"
             app:layout_constraintBaseline_toBaselineOf="@+id/Name"
             app:layout_constraintLeft_toRightOf="@+id/Name"
@@ -82,20 +82,20 @@
 
         <TextView
             android:id="@+id/language"
-            style="@style/TextAppearance.AppCompat.Body2"
+            style="@style/TextAppearance.AppCompat.Large"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="0dp"
             android:layout_marginTop="8dp"
             android:text="Language:"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
             app:layout_constraintLeft_toLeftOf="@+id/Name"
             app:layout_constraintTop_toBottomOf="@+id/description"
             tools:text="ime programskog jezika" />
 
         <TextView
             android:id="@+id/date_created"
-            style="@style/TextAppearance.AppCompat.Body2"
+            style="@style/TextAppearance.AppCompat.Large"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="0dp"

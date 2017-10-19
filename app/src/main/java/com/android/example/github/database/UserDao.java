@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package com.android.example.github.db;
+package com.android.example.github.database;
 
-import com.android.example.github.vo.User;
+import com.android.example.github.valueobjects.User;
 import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Insert;

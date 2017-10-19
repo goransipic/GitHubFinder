@@ -1,10 +1,10 @@
-package com.android.example.github.api;
+package com.android.example.github.serviceapi;
 
 import android.arch.lifecycle.LiveData;
 
-import com.android.example.github.vo.Contributor;
-import com.android.example.github.vo.Repo;
-import com.android.example.github.vo.User;
+import com.android.example.github.valueobjects.Contributor;
+import com.android.example.github.valueobjects.Repo;
+import com.android.example.github.valueobjects.User;
 
 import java.util.List;
 

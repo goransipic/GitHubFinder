@@ -1,9 +1,8 @@
-package com.android.example.github.di;
+package com.android.example.github.dependencyinjection;
 
 import android.app.Application;
 
 import com.android.example.github.GithubApp;
-import com.android.example.github.ui.user.UserActivity;
 
 import javax.inject.Singleton;
 

@@ -10,9 +10,9 @@ import com.android.example.github.repository.RepoRepository;
 import com.android.example.github.repository.UserRepository;
 import com.android.example.github.util.AbsentLiveData;
 import com.android.example.github.util.Objects;
-import com.android.example.github.vo.Repo;
-import com.android.example.github.vo.Resource;
-import com.android.example.github.vo.User;
+import com.android.example.github.valueobjects.Repo;
+import com.android.example.github.valueobjects.Resource;
+import com.android.example.github.valueobjects.User;
 
 import java.util.List;
 

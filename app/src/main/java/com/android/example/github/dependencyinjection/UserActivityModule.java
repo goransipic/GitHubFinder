@@ -1,6 +1,5 @@
-package com.android.example.github.di;
+package com.android.example.github.dependencyinjection;
 
-import com.android.example.github.ui.repo.RepoActivity;
 import com.android.example.github.ui.user.UserActivity;
 
 import dagger.Module;

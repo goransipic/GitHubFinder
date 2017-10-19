@@ -9,9 +9,9 @@ import android.support.annotation.VisibleForTesting;
 import com.android.example.github.repository.RepoRepository;
 import com.android.example.github.util.AbsentLiveData;
 import com.android.example.github.util.Objects;
-import com.android.example.github.vo.Contributor;
-import com.android.example.github.vo.Repo;
-import com.android.example.github.vo.Resource;
+import com.android.example.github.valueobjects.Contributor;
+import com.android.example.github.valueobjects.Repo;
+import com.android.example.github.valueobjects.Resource;
 
 import java.util.List;
 

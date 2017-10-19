@@ -3,7 +3,7 @@ package com.android.example.github;
 import android.app.Activity;
 import android.app.Application;
 
-import com.android.example.github.di.AppInjector;
+import com.android.example.github.dependencyinjection.AppInjector;
 
 import javax.inject.Inject;
 

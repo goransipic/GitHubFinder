@@ -1,11 +1,11 @@
-package com.android.example.github.vo;
+package com.android.example.github.valueobjects;
 
 /**
  * Created by gsipic on 15.10.17..
  */
 
 public enum FilterBy {
-    STARS("stars"),FORKS("forks"),UPDATED("updatedate");
+    STARS("stars"), FORKS("forks"), UPDATED("updatedate");
 
     String type;
 

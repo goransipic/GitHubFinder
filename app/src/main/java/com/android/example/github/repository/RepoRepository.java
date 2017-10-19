@@ -6,18 +6,18 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
 import com.android.example.github.AppExecutors;
-import com.android.example.github.api.ApiResponse;
-import com.android.example.github.api.GithubService;
-import com.android.example.github.api.RepoSearchResponse;
-import com.android.example.github.db.GithubDb;
-import com.android.example.github.db.RepoDao;
+import com.android.example.github.serviceapi.ApiResponse;
+import com.android.example.github.serviceapi.GithubService;
+import com.android.example.github.serviceapi.RepoSearchResponse;
+import com.android.example.github.database.GithubDb;
+import com.android.example.github.database.RepoDao;
 import com.android.example.github.util.AbsentLiveData;
 import com.android.example.github.util.RateLimiter;
-import com.android.example.github.vo.Contributor;
-import com.android.example.github.vo.FilterBy;
-import com.android.example.github.vo.Repo;
-import com.android.example.github.vo.RepoSearchResult;
-import com.android.example.github.vo.Resource;
+import com.android.example.github.valueobjects.Contributor;
+import com.android.example.github.valueobjects.FilterBy;
+import com.android.example.github.valueobjects.Repo;
+import com.android.example.github.valueobjects.RepoSearchResult;
+import com.android.example.github.valueobjects.Resource;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;

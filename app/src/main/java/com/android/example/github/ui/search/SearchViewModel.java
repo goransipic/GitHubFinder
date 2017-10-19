@@ -1,6 +1,5 @@
 package com.android.example.github.ui.search;
 
-import android.arch.core.util.Function;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.Observer;
@@ -14,9 +13,9 @@ import android.support.v4.util.Pair;
 import com.android.example.github.repository.RepoRepository;
 import com.android.example.github.util.AbsentLiveData;
 import com.android.example.github.util.Objects;
-import com.android.example.github.vo.FilterBy;
-import com.android.example.github.vo.Repo;
-import com.android.example.github.vo.Resource;
+import com.android.example.github.valueobjects.FilterBy;
+import com.android.example.github.valueobjects.Repo;
+import com.android.example.github.valueobjects.Resource;
 
 import java.util.List;
 import java.util.Locale;

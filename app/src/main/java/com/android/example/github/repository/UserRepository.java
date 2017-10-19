@@ -5,11 +5,11 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
 import com.android.example.github.AppExecutors;
-import com.android.example.github.api.ApiResponse;
-import com.android.example.github.api.GithubService;
-import com.android.example.github.db.UserDao;
-import com.android.example.github.vo.Resource;
-import com.android.example.github.vo.User;
+import com.android.example.github.serviceapi.ApiResponse;
+import com.android.example.github.serviceapi.GithubService;
+import com.android.example.github.database.UserDao;
+import com.android.example.github.valueobjects.Resource;
+import com.android.example.github.valueobjects.User;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;

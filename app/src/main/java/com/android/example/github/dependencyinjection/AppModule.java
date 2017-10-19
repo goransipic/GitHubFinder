@@ -1,16 +1,14 @@
-package com.android.example.github.di;
+package com.android.example.github.dependencyinjection;
 
 import android.app.Application;
 import android.arch.persistence.room.Room;
 
-import com.android.example.github.api.GithubService;
-import com.android.example.github.db.GithubDb;
-import com.android.example.github.db.RepoDao;
-import com.android.example.github.db.UserDao;
+import com.android.example.github.serviceapi.GithubService;
+import com.android.example.github.database.GithubDb;
+import com.android.example.github.database.RepoDao;
+import com.android.example.github.database.UserDao;
 import com.android.example.github.util.LiveDataCallAdapterFactory;
 import com.google.gson.GsonBuilder;
-
-import java.util.logging.Level;
 
 import javax.inject.Singleton;
 

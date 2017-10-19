@@ -1,4 +1,4 @@
-package com.android.example.github.di;
+package com.android.example.github.dependencyinjection;
 
 /**
  * Created by gsipic on 14.10.17..

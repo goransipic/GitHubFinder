@@ -2,16 +2,14 @@ package com.android.example.github.repository;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MediatorLiveData;
-import android.arch.lifecycle.MutableLiveData;
-import android.arch.lifecycle.Observer;
 import android.support.annotation.MainThread;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.WorkerThread;
 
 import com.android.example.github.AppExecutors;
-import com.android.example.github.api.ApiResponse;
-import com.android.example.github.vo.Resource;
+import com.android.example.github.serviceapi.ApiResponse;
+import com.android.example.github.valueobjects.Resource;
 
 /**
  * Created by gsipic on 14.10.17..
